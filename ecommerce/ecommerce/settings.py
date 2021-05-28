@@ -27,10 +27,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-hwh5x2gdm+*+srhkap(_y0f7mf9pa$w#coiema34!$k274rzq0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = [
-    'ac0c9cba9cd54071b05ec86d17b2a25b.vfs.cloud9.ap-northeast-1.amazonaws.com', '*']
+#ALLOWED_HOSTS = ['ac0c9cba9cd54071b05ec86d17b2a25b.vfs.cloud9.ap-northeast-1.amazonaws.com', '*']
+ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
+
 
 
 # Application definition
@@ -42,8 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+    'ecommerce'
     'store.apps.StoreConfig',
+    "whitenoise.runserver_nostatic",
+    # Other values follow
 ]
 
 MIDDLEWARE = [
@@ -54,6 +57,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    # Add whitenoise middleware after the security middleware                             
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # Other values follow
 ]
 
 ROOT_URLCONF = 'ecommerce.urls'
@@ -131,7 +138,7 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 
 #STATICFILES_DIRS = [BASE_DIR / "static",]
-
+STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
