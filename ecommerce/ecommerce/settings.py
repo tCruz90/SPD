@@ -29,8 +29,8 @@ SECRET_KEY = 'django-insecure-hwh5x2gdm+*+srhkap(_y0f7mf9pa$w#coiema34!$k274rzq0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ['ac0c9cba9cd54071b05ec86d17b2a25b.vfs.cloud9.ap-northeast-1.amazonaws.com', '*']
-ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
+ALLOWED_HOSTS = ['ac0c9cba9cd54071b05ec86d17b2a25b.vfs.cloud9.ap-northeast-1.amazonaws.com', '*']
+#ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
 
 
 
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'store.apps.StoreConfig',
-    "whitenoise.runserver_nostatic",
+    #"whitenoise.runserver_nostatic",
     # Other values follow
 ]
 
@@ -58,7 +58,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     # Add whitenoise middleware after the security middleware                             
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
     # Other values follow
 ]
 
