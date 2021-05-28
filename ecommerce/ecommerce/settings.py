@@ -30,8 +30,6 @@ SECRET_KEY = 'django-insecure-hwh5x2gdm+*+srhkap(_y0f7mf9pa$w#coiema34!$k274rzq0
 DEBUG = True
 
 ALLOWED_HOSTS = ['ac0c9cba9cd54071b05ec86d17b2a25b.vfs.cloud9.ap-northeast-1.amazonaws.com', '*']
-#ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
-
 
 
 # Application definition
@@ -43,9 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     'store.apps.StoreConfig',
-    #"whitenoise.runserver_nostatic",
-    # Other values follow
+     "whitenoise.runserver_nostatic",
 ]
 
 MIDDLEWARE = [
@@ -56,10 +54,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
     # Add whitenoise middleware after the security middleware                             
-    #'whitenoise.middleware.WhiteNoiseMiddleware',
-    # Other values follow
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'ecommerce.urls'
@@ -114,6 +110,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage')
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -137,14 +136,12 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 
 #STATICFILES_DIRS = [BASE_DIR / "static",]
-#STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage')
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
 
 
 # Default primary key field type
