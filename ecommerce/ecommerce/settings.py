@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ecommerce'
+    'store',
     'store.apps.StoreConfig',
     "whitenoise.runserver_nostatic",
     # Other values follow
