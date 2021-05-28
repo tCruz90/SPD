@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-hwh5x2gdm+*+srhkap(_y0f7mf9pa$w#coiema34!$k274rzq0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['ac0c9cba9cd54071b05ec86d17b2a25b.vfs.cloud9.ap-northeast-1.amazonaws.com', '*']
 #ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
